@@ -40,8 +40,10 @@ def wordSearch(l):
                 if word.find(letter) != -1:
                     wl.insert(word.find(letter), letter)
                     if len(wl) == len(word):
-                        newWord = ''.join(wl)
-                        if newWord == word:
+                        wl.sort()
+                        spWord = list(word)
+                        spWord.sort()
+                        if wl == spWord:
                             print(word)
                             result.append(word)
 
