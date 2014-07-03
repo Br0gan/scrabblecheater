@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#/usr/bin/python
 
 import argparse, re, sys
 
@@ -35,29 +35,16 @@ if len(sys.argv) < 2 or containsDigits(userLetters) == True:
 def wordSearch(l):
     for word in data:
         wl = []
-        x = 0
         if len(word) <=  len(l):
             for letter in l:
-                if word.find(letter) !=-1:
-                    try:
-                        wl.remove(word.find(letter))
-                        x += x
-                    except ValueError:
-                        wl.insert(word.find(letter), letter)
-                        if len(wl) == len(word):
-                            newTest = ','.join(wl)
-                            newTest = letCheck.search(newTest)
-                            if newTest == word:
-                                print(word)
-                                result.append(word)
-                    else:
-                        wl.insert(word.find(letter), letter)
-                        if len(wl) + x == len(word):
-                            newTest = ','.join(wl)
-                            newTest = letCheck.search(newTest)
-                            if newTest != word:
-                                print(word)
-                                result.append(word)
+                if word.find(letter) != -1:
+                    wl.insert(word.find(letter), letter)
+                    if len(wl) == len(word):
+                        newWord = ''.join(wl)
+                        print(newWord)
+                        if newWord == word:
+                            print(word)
+                            result.append(word)
 
 result = []
 wordSearch(userList)
