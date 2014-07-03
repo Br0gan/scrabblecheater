@@ -23,7 +23,7 @@ scores = {"a": 1, "c": 3, "b": 3, "e": 1, "d": 2, "g": 2,
 
 
 digits = re.compile('\d')
-letCheck = re.compile('\w')
+letCheck = re.compile('\w+')
 
 def containsDigits(d):
     return(bool(digits.search(d)))
@@ -41,7 +41,6 @@ def wordSearch(l):
                     wl.insert(word.find(letter), letter)
                     if len(wl) == len(word):
                         newWord = ''.join(wl)
-                        print(newWord)
                         if newWord == word:
                             print(word)
                             result.append(word)
