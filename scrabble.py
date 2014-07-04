@@ -12,18 +12,18 @@ data = text.lower().split()
 #Store wordsearch results
 result = []
 
-#CLI agrument parser. Gets user tiles information
+#CLI argument parser. Gets user tiles information
 parser = argparse.ArgumentParser(description='Scabble Cheater!!!')
 parser.add_argument('letters', metavar="letters", type=str,
                     help='Enter your current letters')
 args = parser.parse_args()
 
-#stores user's tiles as a list and the sorts it
+#stores users tiles as a list and the sorts it
 userLetters = args.letters.lower()
 userList = list(userLetters)
 userList = sorted(userList)
 
-#dict of letter score values for word value caculation
+#dict of letter score values for word value calculation
 scores = {"a": 1, "c": 3, "b": 3, "e": 1, "d": 2, "g": 2,
           "f": 4, "i": 1, "h": 4, "k": 5, "j": 8, "m": 3,
           "l": 1, "o": 1, "n": 1, "q": 10, "p": 3, "s": 1,
