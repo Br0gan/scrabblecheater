@@ -6,8 +6,7 @@ from operator import itemgetter
 
 #open scrabble offical word list and and read it into a var as a list for minipulation
 f = open('sowpods.txt', 'r')
-text = f.read()
-data = text.lower().split()
+data = f.read().lower().split()
 
 #Store wordsearch results
 result = []
