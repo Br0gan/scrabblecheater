@@ -40,27 +40,27 @@ if len(sys.argv) < 2 or containsDigits(userLetters) == True:
     print("Please suplly only  letters as argument")
     exit(0)
 #searchs word list for any possible matches and stores matches and word scores.
-def wordSearch(l):
+def wordSearch(tiles):
 
     for word in data:
-        wl = []
-        fscore = 0
-        if len(word) <=  len(l):
-            for letter in l:
+        tileList = []
+        finalScore = 0
+        if len(word) <=  len(tiles):
+            for letter in tiles:
                 if word.find(letter) != -1:
-                    wl.insert(word.find(letter), letter)
+                    tileList.insert(word.find(letter), letter)
                     score = scores[letter]
-                    fscore += score
-                    if len(wl) == len(word):
-                        wl.sort()
-                        spWord = list(word)
-                        spWord.sort()
-                        if wl == spWord:
-                            result.append((word, fscore))
+                    finalScore += score
+                    if len(tileList) == len(word):
+                        tileList.sort()
+                        sortedWord = list(word)
+                        sortedWord.sort()
+                        if tileList == sortedWord:
+                            result.append((word, finalScore))
 
     #sorts list by word score.
-    sortRes = sorted(result, key=itemgetter(1))
-    for res in sortRes:
-        print(res)
+    sortedResults = sorted(result, key=itemgetter(1))
+    for results in sortedResults:
+        print(results)
 
 wordSearch(userList)
