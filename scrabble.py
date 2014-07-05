@@ -3,6 +3,7 @@
 #imprort libs
 import argparse, re, sys
 from operator import itemgetter
+from datetime import datetime
 
 #open scrabble offical word list and and read it into a var as a list for minipulation
 f = open('sowpods.txt', 'r')
@@ -40,26 +41,30 @@ if len(sys.argv) < 2 or containsDigits(userLetters) == True:
     exit(0)
 #searchs word list for any possible matches and stores matches and word scores.
 def wordSearch(tiles):
-
+    start = datetime.now()
     for word in data:
         tileList = []
         finalScore = 0
+        sortedWord = list(word)
         if len(word) <=  len(tiles):
             for letter in tiles:
-                if word.find(letter) != -1:
-                    tileList.insert(word.find(letter), letter)
+                if letter in sortedWord:
+                    tileList.append(letter)
+                    sortedWord.remove(letter)
                     score = scores[letter]
                     finalScore += score
                     if len(tileList) == len(word):
                         tileList.sort()
-                        sortedWord = list(word)
-                        sortedWord.sort()
-                        if tileList == sortedWord:
+                        sWord = list(word)
+                        sWord.sort()
+                        if tileList == sWord:
                             result.append((word, finalScore))
 
+    end = datetime.now()
     #sorts list by word score.
     sortedResults = sorted(result, key=itemgetter(1))
     for results in sortedResults:
         print(results)
+    print(end - start)
 
 wordSearch(userList)
